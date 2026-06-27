@@ -1,0 +1,102 @@
+# ===========================================================
+# Conexiaa - pyproject.toml
+# Full project configuration for the Python backend.
+# ===========================================================
+
+[project]
+name = "conexiaa"
+version = "1.0.0"
+description = "World-class AI Communication Bridge unifying SMS, social (Zernio), voice (ElevenLabs) with Featherless AI, RAG, and real-time WebSocket."
+authors = [
+    { name = "Conexiaa Hackathon Team" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.11,<4"
+keywords = ["ai", "chat", "rag", "featherless", "elevenlabs", "zernio", "multi-channel"]
+
+# ─── Runtime Dependencies ──────────────────────────────────
+dependencies = [
+    "fastapi[standard]==0.115.6",
+    "uvicorn[standard]==0.34.0",
+    "sqlalchemy[asyncio]==2.0.36",
+    "asyncpg==0.30.0",
+    "psycopg2-binary==2.9.10",
+    "pgvector==0.3.5",
+    "pydantic==2.10.3",
+    "pydantic-settings==2.6.1",
+    "python-dotenv==1.0.1",
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "bcrypt==4.2.1",
+    "httpx==0.28.1",
+    "redis[hiredis]==5.2.1",
+    "hiredis==2.4.0",
+    "celery==5.4.0",
+    "sentence-transformers==3.3.1",
+    "torch==2.5.1",
+    "faiss-cpu==1.9.0.post1",
+    "numpy==1.26.4",
+    "pandas==2.2.3",
+    "pyarrow==17.0.0",
+    "elevenlabs==1.6.0",
+    "orjson==3.10.11",
+    "python-multipart==0.0.18",
+]
+
+# ─── Optional Dev Dependencies ─────────────────────────────
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.24.0",
+    "httpx-ws==0.3.1",
+    "ruff==0.14.11",
+    "black==24.10.0",
+    "mypy==1.13.0",
+]
+
+# ─── Project URLs ─────────────────────────────────────────
+[project.urls]
+Homepage = "https://github.com/ruerthjr/conexiaa"
+Repository = "https://github.com/ruperthjr/conexiaa"
+
+# ─── Build System ──────────────────────────────────────────
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ─── Tool: uv (fast package manager) ──────────────────────
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.14.11",
+    "black>=24.10.0",
+    "mypy>=1.13.0",
+]
+
+# ─── Tool: Ruff (linter/formatter) ────────────────────────
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+exclude = ["venv", ".venv", ".git", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# ─── Tool: pytest ──────────────────────────────────────────
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --tb=short --strict-markers"
+
+# ─── Scripts (entry points) ────────────────────────────────
+[project.scripts]
+conexiaa-backend = "backend.main:app"

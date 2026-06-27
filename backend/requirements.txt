@@ -1,0 +1,61 @@
+# Install with: pip install -r backend/requirements.txt
+
+# Core Web Framework (FastAPI + ASGI server)
+fastapi[standard]==0.115.6
+uvicorn[standard]==0.34.0
+
+# Database & ORM (PostgreSQL + PGVector)
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+psycopg2-binary==2.9.10
+pgvector==0.3.5
+
+# Data Validation & Settings
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+
+# HTTP Client (external API calls)
+httpx==0.28.1
+
+# Redis (for caching / background tasks)
+redis[hiredis]==5.2.1
+hiredis==2.4.0
+
+# Background Task Queue (optional, for long-running jobs)
+celery==5.4.0
+
+# NLP / RAG (sentence transformers for query embedding)
+sentence-transformers==3.3.1
+# Torch (automatically installed with sentence-transformers, but pin for reproducibility)
+torch==2.5.1
+
+# Third‑party service SDKs
+elevenlabs==1.6.0          # ElevenLabs voice synthesis
+# Featherless AI does not have an official SDK; uses httpx.
+
+# Utilities
+orjson==3.10.11            # Fast JSON serialisation
+python-multipart==0.0.18   # File uploads (if needed)
+
+# Development (optional, not strictly required in production)
+# pytest==8.3.4
+# pytest-asyncio==0.24.0
+# httpx-ws==0.3.1          # WebSocket testing
+
+
+# ─── Testing ──────────────────────────────────
+# 1. Create and activate a Python 3.12 virtual environment:
+#    python3.12 -m venv ai_env_312 && source ai_env_312/bin/activate
+# 2. Install dependencies:
+#    pip install -r backend/requirements.txt
+# 3. Start the backend:
+#    uvicorn backend.main:app --reload --port 8000
+# 4. Verify API docs at http://localhost:8000/docs
+# 5. (Optional) For offline demos, comment out heavy torch/sentence-transformers
+#    if RAG is not being demonstrated live.

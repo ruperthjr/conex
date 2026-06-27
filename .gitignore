@@ -1,0 +1,79 @@
+# ─── Dependencies ──────────────────────────────────────────
+node_modules/
+.pnpm-store/
+
+# Python virtual environment
+venv/
+.venv/
+env/
+.env
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+*.egg
+
+# ─── Environment & Secrets ─────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.secret
+
+# API keys / service account files
+service-account.json
+*.pem
+
+# ─── Build / Cache ─────────────────────────────────────────
+.next/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── IDE / Editor ──────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Logs ──────────────────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ─── Testing / Coverage ────────────────────────────────────
+coverage/
+.nyc_output/
+
+# ─── Temporary files ───────────────────────────────────────
+*.tmp
+*.bak
+
+# ─── OS files ──────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ─── Data files that are too large or regenerated ──────────
+data/embeddings/*
+data/processed/*
+data/raw/**/*.csv
+data/raw/**/*.json
+
+# ─── Generated demo audio (not needed in repo) ─────────────
+# backend/static/audio/*.mp3
+
+# ─── Testing ─────────────────
+# 1. Run `git status` after setting up the project. You
+#    should see only source files, no node_modules or .env.
+# 2. Try adding a file like `.env` and confirm it is ignored.
+# 3. The `data/` folder contents that are large should be
+#    managed with Git LFS; the .gitignore does not exclude
+#    them by default so they can be tracked via LFS.
+# 4. For a clean repo, run `git clean -xdn` to preview what
+#    would be removed (dry-run). Then `git clean -xdf` to
+#    delete all ignored files if needed.

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "conexiaa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "World-class AI Communication Bridge – SMS, Social, Voice unified by Featherless AI, RAG, and ElevenLabs",
+  "author": "Conexiaa Hackathon Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "demo": "concurrently \"npm run dev\" \"cd backend && uvicorn main:app --host 0.0.0.0 --port 8000 --reload\"",
+    "setup": "python scripts/generate_demo_data.py && python scripts/ingest_datasets.py",
+    "orange-demo": "echo \"🟠 Conexiaa demo ready – start backend and frontend, then open http://localhost:3000\""
+  },
+  "dependencies": {
+    "@radix-ui/react-avatar": "^1.2.0",
+    "@radix-ui/react-dialog": "^1.1.17",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tabs": "^1.1.15",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.0",
+    "lucide-react": "^0.562.0",
+    "motion": "^12.25.0",
+    "next": "16.2.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^20.19.28",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^9.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4.1.18",
+    "tw-animate-css": "^1.4.0",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "flatted@<=3.4.1": "3.4.2",
+      "minimatch@<3.1.3": "3.1.3",
+      "minimatch@>=9.0.0 <9.0.7": "9.0.7",
+      "picomatch@<2.3.2": "2.3.2",
+      "picomatch@>=4.0.0 <4.0.4": "4.0.4"
+    }
+  }
+}
