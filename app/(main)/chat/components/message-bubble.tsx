@@ -132,7 +132,7 @@ export interface MessageBubbleProps {
   className?: string;
 }
 
-function MessageBubbleComponent({
+export function MessageBubble({
   message,
   channelConfig,
   ragHighlight,

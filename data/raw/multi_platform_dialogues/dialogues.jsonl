@@ -1,0 +1,6 @@
+{"conversation_id": "conv-1", "utterance": "Hi, I need help with my account", "speaker": "customer", "channel": "voice"}
+{"conversation_id": "conv-1", "utterance": "Sure, I can help you with that. Could you verify your email?", "speaker": "agent", "channel": "voice"}
+{"conversation_id": "conv-2", "utterance": "My delivery is late", "speaker": "customer", "channel": "sms"}
+{"conversation_id": "conv-2", "utterance": "We apologize. Your package will arrive tomorrow.", "speaker": "agent", "channel": "sms"}
+{"conversation_id": "conv-3", "utterance": "Hey @support, the app crashes when I try to open settings", "speaker": "customer", "channel": "social"}
+{"conversation_id": "conv-3", "utterance": "@user We're aware of the bug and a fix is rolling out in the next update.", "speaker": "agent", "channel": "social"}

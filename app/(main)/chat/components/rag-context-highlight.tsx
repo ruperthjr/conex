@@ -82,7 +82,7 @@ const ContextItem = memo(function ContextItem({
             <Target className="w-2.5 h-2.5" style={{ color: scoreColor }} />
           </div>
           <span className="text-[10px] font-semibold text-white/60 truncate">
-            {ctx.dataset ?? ctx.source.split("/").pop()}
+            {ctx.dataset ?? (ctx.source ?? "").split("/").pop() ?? "unknown"}
           </span>
         </div>
         <div className="flex items-center gap-1 shrink-0">
@@ -105,7 +105,7 @@ const ContextItem = memo(function ContextItem({
                 backgroundColor: ctx.channel === "sms" ? "#FF6B00" + "10" : ctx.channel === "social" ? "#7C3AED10" : "#0EA5E910",
               }}
             >
-              {ctx.channel.toUpperCase()}
+              {ctx.channel ? ctx.channel.toUpperCase() : "UNKNOWN"}
             </span>
           )}
         </div>

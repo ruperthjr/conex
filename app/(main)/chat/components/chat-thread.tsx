@@ -171,7 +171,7 @@ DateSeparator.displayName = "DateSeparator";
 
 /** Channel transition banner — shows when the channel changes mid-thread */
 const ChannelSwitchBanner = memo(
-  ({ from, to, cfg }: { from: Channel; to: Channel; cfg: Record<Channel, ChannelCfg> }) => {
+  ({ from, to, cfg }: { from: Channel, to: Channel; cfg: Record<Channel, ChannelCfg> }) => {
     const toCfg = cfg[to];
     const ToIcon = toCfg.icon;
     const fromCfg = cfg[from];
@@ -452,17 +452,13 @@ export function ChatThread({
 
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   const [unreadBelow, setUnreadBelow] = useState(0);
-  const [prevChannel, setPrevChannel] = useState<Channel | null>(null);
-  const [channelSwitches, setChannelSwitches] = useState
-    Map<string, { from: Channel; to: Channel }>
-  >(new Map());
 
   // ─── Build groups ────────────────────────────────────────────────────────
   const groups = useMemo(() => buildMessageGroups(messages), [messages]);
 
   // ─── Detect channel switches between groups ───────────────────────────────
-  useEffect(() => {
-    const switches = new Map<string, { from: Channel; to: Channel }>();
+  const channelSwitches = useMemo(() => {
+    const switches = new Map<string, { from: Channel, to: Channel }>();
     for (let i = 1; i < groups.length; i++) {
       if (groups[i].channel !== groups[i - 1].channel) {
         switches.set(groups[i].id, {
@@ -471,19 +467,8 @@ export function ChatThread({
         });
       }
     }
-    setChannelSwitches(switches);
+    return switches;
   }, [groups]);
-
-  // ─── Active channel change ────────────────────────────────────────────────
-  useEffect(() => {
-    setPrevChannel((prev) => {
-      if (prev !== null && prev !== activeChannel) return prev;
-      return activeChannel;
-    });
-    // After a brief delay, update prevChannel to current
-    const t = setTimeout(() => setPrevChannel(activeChannel), 600);
-    return () => clearTimeout(t);
-  }, [activeChannel]);
 
   // ─── Scroll logic ─────────────────────────────────────────────────────────
   const scrollToBottom = useCallback((behavior: ScrollBehavior = "smooth") => {
@@ -526,7 +511,8 @@ export function ChatThread({
 
   // ─── Initial scroll on mount ─────────────────────────────────────────────
   useEffect(() => {
-    scrollToBottom("instant");
+    // Defer to next frame to avoid synchronous setState inside effect
+    requestAnimationFrame(() => scrollToBottom("instant"));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ─── Scroll to bottom when active conversation changes ────────────────────

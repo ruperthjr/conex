@@ -320,3 +320,13 @@ body {
     transition: none !important;
   }
 }
+/* Playfair Display as default serif */
+body {
+  font-family: var(--font-playfair), serif;
+}
+
+/* Use Playfair Display as the default typeface */
+body {
+  font-family: var(--font-playfair), serif;
+}
+/* Suppress motion transparent warnings */ [data-motion-warning] { display: none !important; }

@@ -25,7 +25,7 @@ httpx==0.28.1
 
 # Redis (for caching / background tasks)
 redis[hiredis]==5.2.1
-hiredis==2.4.0
+hiredis>=3.0.0
 
 # Background Task Queue (optional, for long-running jobs)
 celery==5.4.0

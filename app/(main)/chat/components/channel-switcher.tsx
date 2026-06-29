@@ -79,8 +79,8 @@ export const ChannelSwitcher = memo(function ChannelSwitcher({
               isActive ? "text-white" : "text-white/40 hover:text-white/70"
             )}
             animate={{
-              backgroundColor: isActive ? channelColor + "18" : "transparent",
-              borderColor: isActive ? channelColor + "30" : "transparent",
+              backgroundColor: isActive ? channelColor + "18" : "rgba(0,0,0,0)",
+              borderColor: isActive ? channelColor + "30" : "rgba(0,0,0,0)",
               borderWidth: isActive ? "1px" : "0px",
             }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
